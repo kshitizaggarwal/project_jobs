@@ -83,47 +83,15 @@ for i in range(1):
 data = pd.DataFrame(jobs)
 data.to_csv("product_analyst_jobs1.csv")
 
-dataset = pd.read_csv("product_analyst_jobs1.csv",index_col = 0)
+# =============================================================================
+#dataset = pd.read_csv("product_analyst_jobs1.csv",index_col = 0)
 
-dataset.isna().sum()
-dataset  = dataset.dropna()
+#dataset.isna().sum()
+#dataset  = dataset.dropna()
 
-dataset=dataset.apply(lambda x: x.astype(str).str.lower())
+#dataset=dataset.apply(lambda x: x.astype(str).str.lower())
 
-dataset.skills = [skill.split("\n") for skill in dataset.skills]
-dataset.locations = [location.split(",") for location in dataset.locations]
+#dataset.skills = [skill.split("\n") for skill in dataset.skills]
+#dataset.locations = [location.split(",") for location in dataset.locations]
 
-
-#monsterindia.com
-
-driver = webdriver.Chrome("C://Users//Kshitiz//Downloads//chromedriver_win32//chromedriver")
-
-#data scrapped from the website
-jobs = {
-        "roles":[],
-        "companies":[],
-        "locations":[],
-        "experience":[],
-        "skills":[]
-        }
-
-#for i in range(11):
-driver.get("https://www.monsterindia.com/srp/results?sort=1&limit=100&query=data%20science&searchId=fcda45f7-35d5-44e0-ae6a-bad90ccff6e0")
-#time.sleep(3)
-lst = driver.find_elements_by_css_selector(".card-body.card-body-apply.pd10")
-#print(i)
-i=1
-for job in lst:
-    role=job.find_element_by_css_selector("a").text
-    company=job.find_element_by_css_selector(".under-link").text
-    location=job.find_element_by_css_selector("small").text
-    exp=job.find_element_by_css_selector(".exp.col-xxs-12.col-sm-3.text-ellipsis").text
-    skills=job.find_element_by_css_selector(".descrip-skills").text 
-    
-    jobs["roles"].append(role)
-    jobs["companies"].append(company)
-    jobs["locations"].append(location)
-    jobs["experience"].append(exp)
-    jobs["skills"].append(skills[9:])
-    i = i+1
-           
+# =============================================================================
